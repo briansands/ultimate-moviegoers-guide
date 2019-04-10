@@ -1,4 +1,4 @@
-export interface MoviesResponse {
+export interface Movies {
     dates: any,
     page: number,
     results: {

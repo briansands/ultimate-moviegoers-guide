@@ -12,6 +12,7 @@ import { NowPlayingComponent } from './pages/now-playing/now-playing.component';
 import { PopularComponent } from './pages/popular/popular.component';
 import { TopRatedComponent } from './pages/top-rated/top-rated.component';
 import { MoviesService } from './movies/movies.service';
+import { MoviesResolver } from './movies/movies.resolver';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,10 @@ import { MoviesService } from './movies/movies.service';
     AppRoutingModule,
     BrowserAnimationsModule,
   ],
-  providers: [MoviesService],
+  providers: [
+    MoviesService,
+    MoviesResolver,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
