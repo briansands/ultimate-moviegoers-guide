@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map } from 'rxjs/operators';
 import { SearchService } from './search.service';
 
 @Component({
@@ -11,18 +10,13 @@ import { SearchService } from './search.service';
 })
 export class SearchComponent {
     public myControl = new FormControl();
-    public options: string[] = ['One', 'Two', 'Three'];
-    public movies: Observable<string[]>;
+    public searchResults: Observable<string | Object>;
 
     public constructor(
         private searchService: SearchService,
     ) { }
 
     public ngOnInit() {
-        this.movies = this.myControl.valueChanges
-            .pipe(
-                startWith(''),
-                map(value => this.searchService.search(value))
-            );
+        this.myControl.valueChanges.subscribe(value => this.searchResults = this.searchService.search(value));
     }
 }
