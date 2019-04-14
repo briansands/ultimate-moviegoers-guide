@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,6 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'ultimate-moviegoers-guide';
+  public title = 'ultimate-moviegoers-guide';
+  public mode = new FormControl('push');
 }

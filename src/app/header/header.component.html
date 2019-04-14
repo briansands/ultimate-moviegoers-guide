@@ -1,8 +1,7 @@
 <header>
-  <nav>
-    <a routerLink="/" routerLinkActive="active">Home</a>
-    <a routerLink="/now-playing" routerLinkActive="active">Now Playing</a>
-    <a routerLink="/popular" routerLinkActive="active">Popular</a>
-    <a routerLink="/top-rated" routerLinkActive="active">Top Rated</a>
-  </nav>
+    <mat-toolbar>
+        <button mat-icon-button (click)="toggleSideNav()" class="icon">
+            <mat-icon color="primary">menu</mat-icon>
+        </button>
+    </mat-toolbar>
 </header>

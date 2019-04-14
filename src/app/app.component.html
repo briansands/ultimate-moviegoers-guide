@@ -1,4 +1,21 @@
-<app-header></app-header>
-<main>
-    <router-outlet></router-outlet>
-</main>
+<mat-sidenav-container class="sidenav-cointainer">
+    <mat-sidenav #sidenav [mode]="mode.value" class="side-nav">
+        <button mat-icon-button (click)="sidenav.toggle()" class="icon">
+            <mat-icon color="primary">close</mat-icon>
+        </button>
+        <nav>
+            <ul>
+                <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
+                <a routerLink="/now-playing" routerLinkActive="active" class="nav-link">Now Playing</a>
+                <a routerLink="/popular" routerLinkActive="active" class="nav-link">Popular</a>
+                <a routerLink="/top-rated" routerLinkActive="active" class="nav-link">Top Rated</a>
+            </ul>
+        </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <app-header (onNavClick)="sidenav.toggle()"></app-header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

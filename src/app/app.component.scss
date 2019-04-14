@@ -1,0 +1,27 @@
+.sidenav-cointainer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-link {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding-bottom: 16px;
+}
+
+.side-nav {
+    width: 50%;
+    @media (min-width: 960px) { 
+        width: 25%;
+    }
+}
