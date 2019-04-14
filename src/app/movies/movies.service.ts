@@ -51,7 +51,7 @@ export class MoviesService {
     }
 
     private getTopRatedMovies() {
-        this.request(TOP_RATED, MovieTypes.TOP_RATED).pipe(
+        return this.request(TOP_RATED, MovieTypes.TOP_RATED).pipe(
             map(response => response)
         );
     }

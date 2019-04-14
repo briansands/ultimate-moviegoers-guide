@@ -1,3 +1,4 @@
-<p>
-  now-playing works!
+<p  *ngIf="movies$ | async as movies">
+    {{ movies | json }}
 </p>
+  

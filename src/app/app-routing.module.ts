@@ -16,10 +16,24 @@ const routes: Routes = [
         resolve: {movies: MoviesResolver},
         data: { movieType: MovieTypes.ALL }
     },
-    { path: 'details', component: DetailsComponent },
-    { path: 'now-playing', component: NowPlayingComponent },
-    { path: 'popular', component: PopularComponent },
-    { path: 'top-rated', component: TopRatedComponent },
+    {   path: 'now-playing', 
+        component: NowPlayingComponent,
+        resolve: {movies: MoviesResolver},
+        data: { movieType: MovieTypes.NOW_PLAYING }
+    },
+    {   path: 'popular', 
+        component: PopularComponent,
+        resolve: {movies: MoviesResolver},
+        data: { movieType: MovieTypes.POPULAR } 
+    },
+    {   path: 'top-rated', 
+        component: TopRatedComponent, 
+        resolve: {movies: MoviesResolver},
+        data: { movieType: MovieTypes.TOP_RATED } 
+    },
+    /* {   path: 'details', 
+        component: DetailsComponent 
+    }, */
 ];
 
 @NgModule({
