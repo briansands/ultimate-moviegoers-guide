@@ -17,6 +17,7 @@ import { TopRatedComponent } from './pages/top-rated/top-rated.component';
 import { MoviesService } from './movies/movies.service';
 import { MoviesResolver } from './movies/movies.resolver';
 import { AppRoutingModule } from './app-routing.module';
+import { SearchModule } from './search/search.module';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import { AppRoutingModule } from './app-routing.module';
         MatToolbarModule,
         MatSidenavModule,
         MatIconModule,
+        SearchModule
     ],
     providers: [
         MoviesService,
