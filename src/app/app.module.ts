@@ -15,9 +15,11 @@ import { NowPlayingComponent } from './pages/now-playing/now-playing.component';
 import { PopularComponent } from './pages/popular/popular.component';
 import { TopRatedComponent } from './pages/top-rated/top-rated.component';
 import { MoviesService } from './movies/movies.service';
-import { MoviesResolver } from './movies/movies.resolver';
 import { AppRoutingModule } from './app-routing.module';
 import { SearchModule } from './search/search.module';
+import { MoviesResolver } from './movies/movies.resolver';
+import { MovieDetailsResolver } from './pages/details/details.resolver';
+
 
 @NgModule({
     declarations: [
@@ -42,6 +44,7 @@ import { SearchModule } from './search/search.module';
     providers: [
         MoviesService,
         MoviesResolver,
+        MovieDetailsResolver
     ],
     bootstrap: [AppComponent]
 })

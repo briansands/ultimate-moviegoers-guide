@@ -6,7 +6,9 @@ import { HttpClient } from '@angular/common/http';
 
 import { Movies } from '../models/movies.interface';
 import { MovieTypes } from '../models/movie-types.enum';
+import { BASE_URL, API_KEY } from '../models/api.const'
 import { NOW_PLAYING, POPULAR, TOP_RATED} from '../models/movies.const';
+import { MovieDetails } from '../models/movie-details.interface';
 
 
 @Injectable()
@@ -27,6 +29,13 @@ export class MoviesService {
         }
 
         return response;
+    }
+
+    public getDetails(id: string): Observable<MovieDetails> {
+        const movieDetailsRequest = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=en-US`;
+        return this.request(movieDetailsRequest).pipe(
+            map(response => response)
+        );
     }
 
     private getAllMovies() {
@@ -56,9 +65,11 @@ export class MoviesService {
         );
     }
 
-    private request(req: any, type: MovieTypes): Observable<Movies> {
+    private request(req: string, type?: MovieTypes): Observable<Movies&MovieDetails> {
         return this.http.get(req).pipe(map((response: any) => {
-            response.type = type;
+            if (type) {
+                response.type = type;
+            }
             return response;
         }), catchError(err => of(`error: ${err}`)));
     }

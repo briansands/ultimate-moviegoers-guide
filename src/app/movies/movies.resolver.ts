@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 
 import { Movies } from '../models/movies.interface';
 import { MoviesService } from './movies.service';
@@ -8,7 +8,7 @@ import { MoviesService } from './movies.service';
 export class MoviesResolver implements Resolve<Movies>{
     constructor(private moviesService: MoviesService) {}
     
-    public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    public resolve(route: ActivatedRouteSnapshot) {
         return this.moviesService.getMovies(route.data.movieType);
     }
 }
