@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { SearchService } from './search.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-search',
@@ -14,9 +15,16 @@ export class SearchComponent {
 
     public constructor(
         private searchService: SearchService,
+        private router: Router
     ) { }
 
     public ngOnInit() {
         this.myControl.valueChanges.subscribe(value => this.searchResults = this.searchService.search(value));
+    }
+
+    public routeToMovieDetails(selectedMovieId: string) {
+        if (selectedMovieId) {
+            this.router.navigate(['details', selectedMovieId]);
+        }
     }
 }

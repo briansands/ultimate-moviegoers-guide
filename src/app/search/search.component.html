@@ -2,7 +2,7 @@
     <mat-form-field class="width-100">
       <input type="text" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
-       <mat-option *ngFor="let option of (searchResults | async)?.results" [value]="option">
+       <mat-option *ngFor="let option of (searchResults | async)?.results" (click)="routeToMovieDetails(option.id)">
           {{option.original_title}}
         </mat-option>
       </mat-autocomplete>

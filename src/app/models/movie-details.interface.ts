@@ -1,4 +1,5 @@
 export interface MovieDetails {
+    original_title: string,
     backdrop_path: string,
     poster_path: string,
     overview: string,
@@ -7,6 +8,5 @@ export interface MovieDetails {
     runtime: number,
     status: string,
     tagline: string,
-    title: string,
-    vote_average: number,
+    vote_average: number
 }
