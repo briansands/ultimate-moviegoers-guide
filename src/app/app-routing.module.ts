@@ -32,7 +32,7 @@ const routes: Routes = [
         resolve: {movies: MoviesResolver},
         data: { movieType: MovieTypes.TOP_RATED } 
     },
-    {   path: 'details/:id', 
+    {   path: 'details/:movieName/:id', 
         component: DetailsComponent ,
         resolve: { movieDetails: MovieDetailsResolver },
     },

@@ -22,9 +22,11 @@ export class SearchComponent {
         this.myControl.valueChanges.subscribe(value => this.searchResults = this.searchService.search(value));
     }
 
-    public routeToMovieDetails(selectedMovieId: string) {
+    public routeToMovieDetails(selectedMovieName: string, selectedMovieId: string) {
+        const movieName = selectedMovieName.replace(/\W/g, '');
+
         if (selectedMovieId) {
-            this.router.navigate(['details', selectedMovieId]);
+            this.router.navigate([`details/${movieName}`, selectedMovieId]);
         }
     }
 }
