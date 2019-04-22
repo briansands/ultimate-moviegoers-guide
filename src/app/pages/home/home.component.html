@@ -4,8 +4,8 @@
             <h1>{{ movie.type }}</h1>
             <mat-form-field fxHide="{{i > 0}}" class="margin-top-8">
                 <mat-label>Sort Movies By:</mat-label>
-                <mat-select [value]="sortOptions[0]">
-                    <mat-option *ngFor="let sortOption of sortOptions" (click)="sortMovies(sortOption)" [value]="sortOption" class="sort-option">
+                <mat-select [value]="selectedSortOption">
+                    <mat-option *ngFor="let sortOption of sortOptions" (click)="sortMovies(sortOption)" [(value)]="sortOption" class="sort-option">
                         {{ sortOption }}
                     </mat-option>
                 </mat-select>

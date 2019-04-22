@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 })
 export class HomeComponent {
     public sortOptions = [SortOptions.NOW_PLAYING, SortOptions.TOP_RATED, SortOptions.POPULAR];
-    public readonly initialOptionSelected = SortOptions.NOW_PLAYING;
+    public selectedSortOption = SortOptions.NOW_PLAYING;
 
     constructor(private route: ActivatedRoute) { }
 
@@ -22,6 +22,7 @@ export class HomeComponent {
     );
 
     public sortMovies(sortOption: SortOptions): Observable<Movies[]> {
+        this.selectedSortOption = sortOption;
         return this.movies$ = this.movies$.pipe(map((movies: Movies[]) => {
             return this.sortedMovies(movies, sortOption);
         }));
