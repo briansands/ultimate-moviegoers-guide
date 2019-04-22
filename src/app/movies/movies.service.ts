@@ -70,7 +70,25 @@ export class MoviesService {
             if (type) {
                 response.type = type;
             }
+            if (type === MovieTypes.NOW_PLAYING) {
+                response = this.sortNowPlayingByReleaseDate(response);
+            }
+            
             return response;
         }), catchError(err => of(`error: ${err}`)));
+    }
+
+    private sortNowPlayingByReleaseDate(nowPlayingResponse: Movies): Movies {
+        nowPlayingResponse.results.sort((a, b) => {
+                if (a.release_date > b.release_date) {
+                    return -1;
+                }
+                if (a.release_date < b.release_date) {
+                    return 1;
+                }
+                return 0;
+        });
+
+        return nowPlayingResponse;
     }
 }
