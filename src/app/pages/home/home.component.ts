@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { resolvedMovies } from 'src/app/movies/resolved-movies.operator';
 import { SortOptions } from 'src/app/models/sort-options.enum';
 import { map } from 'rxjs/operators';
-import { BASE_IMG_URL } from 'src/app/models/movies.const';
 
 @Component({
     selector: 'app-home',
@@ -15,7 +14,6 @@ import { BASE_IMG_URL } from 'src/app/models/movies.const';
 export class HomeComponent {
     public sortOptions = [SortOptions.NOW_PLAYING, SortOptions.TOP_RATED, SortOptions.POPULAR];
     public readonly initialOptionSelected = SortOptions.NOW_PLAYING;
-    public readonly baseImgUrl = BASE_IMG_URL;
 
     constructor(private route: ActivatedRoute) { }
 

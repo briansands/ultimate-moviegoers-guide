@@ -1,0 +1,14 @@
+<ng-container *ngIf="movie?.results">
+    <div fxLayout="row wrap">
+        <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="50%" fxFlex.gt-md="33%">
+            <mat-card-content fxLayout="row">
+                <img src="{{baseImgUrl}}{{details.poster_path}}" width="50%" height="50%">
+                <div fxFlex.gt-sm="50%" class="padding-left-24">
+                    <mat-card-title>{{ details.title }}</mat-card-title>
+                    <p>Overview: {{ details.overview }}</p>
+                    <p>{{ details.release_date | date:'longDate'}}</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</ng-container>

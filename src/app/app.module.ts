@@ -17,6 +17,7 @@ import { SearchModule } from './search/search.module';
 import { MoviesResolver } from './movies/movies.resolver';
 import { MovieDetailsResolver } from './pages/details/details.resolver';
 import { MaterialModule } from './material.module';
+import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MaterialModule } from './material.module';
         NowPlayingComponent,
         PopularComponent,
         TopRatedComponent,
+        MovieCardComponent,
     ],
     imports: [
         AppRoutingModule,
