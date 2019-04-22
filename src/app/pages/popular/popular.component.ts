@@ -13,7 +13,7 @@ export class PopularComponent {
 
     constructor(private route: ActivatedRoute) { }
 
-    public movies$: Observable<Movies> = this.route.data.pipe(
+    public movie$: Observable<Movies> = this.route.data.pipe(
         resolvedMovies(),
     );
 

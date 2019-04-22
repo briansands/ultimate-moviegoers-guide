@@ -1,3 +1,6 @@
-<p *ngIf="movies$ | async as movies">
-    {{ movies | json }}
-</p>
+<ng-container *ngIf="movie$ | async as movie">
+    <section>
+        <h1>{{ movie.type }}</h1>
+        <movie-card [movie]="movie"></movie-card>
+    </section>
+</ng-container>
