@@ -13,7 +13,7 @@ import { BASE_IMG_URL } from 'src/app/models/movies.const';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-    public sortOptions = [SortOptions.NOW_PLAYING, SortOptions.POPULAR, SortOptions.TOP_RATED];
+    public sortOptions = [SortOptions.NOW_PLAYING, SortOptions.TOP_RATED, SortOptions.POPULAR];
     public readonly initialOptionSelected = SortOptions.NOW_PLAYING;
     public readonly baseImgUrl = BASE_IMG_URL;
 
