@@ -10,9 +10,9 @@
    <section *ngFor="let movie of movies">
        <h1>{{ movie.type }}</h1>
        <div fxLayout="row wrap">
-            <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="50%" fxFlex.gt-lg="33%">
-                <mat-card-content fxLayout="row" fxFlexFill>
-                    <img src="{{baseImgUrl}}{{details.poster_path}}" width="185" height="278">
+            <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="50%" fxFlex.gt-md="33%">
+                <mat-card-content fxLayout="row">
+                    <img src="{{baseImgUrl}}{{details.poster_path}}" width="50%" height="50%">
                     <div fxFlex.gt-sm="50%" class="padding-left-25">
                         <mat-card-title>{{ details.title }}</mat-card-title>
                         <p>Overview: {{ details.overview }}</p>
