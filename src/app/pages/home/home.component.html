@@ -1,3 +1,11 @@
+<mat-form-field>
+    <mat-label>Sort Movies By:</mat-label>
+    <mat-select [value]="sortOptions[0]">
+        <mat-option *ngFor="let sortOption of sortOptions" (click)="sortMovies(sortOption)" [value]="sortOption">
+            {{sortOption}}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
 <p *ngIf="movies$ | async as movies">
     {{ movies | json }}
 </p>

@@ -3,9 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
+import { 
+    MatSelectModule, 
+    MatFormFieldModule, 
+    MatIconModule, 
+    MatSidenavModule, 
+    MatToolbarModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -39,6 +43,8 @@ import { MovieDetailsResolver } from './pages/details/details.resolver';
         MatToolbarModule,
         MatSidenavModule,
         MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
         SearchModule
     ],
     providers: [
