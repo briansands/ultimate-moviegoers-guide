@@ -4,11 +4,11 @@
             <mat-icon color="primary">close</mat-icon>
         </button>
         <nav>
-            <ul>
-                <a routerLink="/" routerLinkActive="active" class="nav-link">Home</a>
-                <a routerLink="/now-playing" routerLinkActive="active" class="nav-link">Now Playing</a>
-                <a routerLink="/popular" routerLinkActive="active" class="nav-link">Popular</a>
-                <a routerLink="/top-rated" routerLinkActive="active" class="nav-link">Top Rated</a>
+            <ul fxLayout="column">
+                <a routerLink="/" routerLinkActive="active" (click)="sidenav.toggle()" class="nav-link">Home</a>
+                <a routerLink="/now-playing" routerLinkActive="active" (click)="sidenav.toggle()" class="nav-link">Now Playing</a>
+                <a routerLink="/popular" routerLinkActive="active" (click)="sidenav.toggle()" class="nav-link">Popular</a>
+                <a routerLink="/top-rated" routerLinkActive="active" (click)="sidenav.toggle()" class="nav-link">Top Rated</a>
             </ul>
         </nav>
     </mat-sidenav>

@@ -1,4 +1,12 @@
+@import'../styles/colors.scss';
+
 .form {
     width: 100%;
+}
+
+.mat-option {
+  &:hover {
+    background: $primary-color;
   }
+}
   

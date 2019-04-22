@@ -1,0 +1,11 @@
+@import '../../styles/colors.scss';
+
+.sort-container {
+    padding: 8px 16px;
+}
+
+.sort-option {
+    &:hover {
+        background: $primary-color;
+    }
+}

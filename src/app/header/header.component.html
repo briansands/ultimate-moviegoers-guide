@@ -1,8 +1,8 @@
 <header>
-    <mat-toolbar>
-        <button mat-icon-button (click)="toggleSideNav()" class="icon">
+    <mat-toolbar fxLayout="row">
+        <button mat-icon-button mat-button (click)="toggleSideNav()" class="icon text-align-left">
             <mat-icon matRipple color="primary">menu</mat-icon>
         </button>
-        <app-search class="width-100"></app-search>
+        <app-search fxFlex="100%" fxFlex.gt-sm="50%" class="width-100 margin-left-24"></app-search>
     </mat-toolbar>
 </header>

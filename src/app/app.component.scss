@@ -1,3 +1,6 @@
+@import './styles/colors.scss';
+@import './styles/breakpoints.scss';
+
 .sidenav-cointainer {
     position: absolute;
     top: 0;
@@ -16,12 +19,15 @@
     display: block;
     color: #fff;
     text-decoration: none;
-    padding-bottom: 16px;
+    padding: 16px 0;
+    &:hover {
+        background: $primary-color;
+    }
 }
 
 .side-nav {
     width: 50%;
-    @media (min-width: 960px) { 
+    @media (min-width: $gt-sm) { 
         width: 25%;
     }
 }

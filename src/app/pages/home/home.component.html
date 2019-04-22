@@ -1,19 +1,21 @@
-<mat-form-field>
-    <mat-label>Sort Movies By:</mat-label>
-    <mat-select [value]="sortOptions[0]">
-        <mat-option *ngFor="let sortOption of sortOptions" (click)="sortMovies(sortOption)" [value]="sortOption">
-            {{ sortOption }}
-        </mat-option>
-    </mat-select>
-</mat-form-field>
 <ng-container *ngIf="movies$ | async as movies">
-   <section *ngFor="let movie of movies">
-       <h1>{{ movie.type }}</h1>
+   <section *ngFor="let movie of movies; let i = index">
+       <div fxLayout="row" fxLayoutAlign="space-between" class="sort-container">
+            <h1>{{ movie.type }}</h1>
+            <mat-form-field fxHide="{{i > 0}}" class="margin-top-8">
+                <mat-label>Sort Movies By:</mat-label>
+                <mat-select [value]="sortOptions[0]">
+                    <mat-option *ngFor="let sortOption of sortOptions" (click)="sortMovies(sortOption)" [value]="sortOption" class="sort-option">
+                        {{ sortOption }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
        <div fxLayout="row wrap">
             <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="50%" fxFlex.gt-md="33%">
                 <mat-card-content fxLayout="row">
                     <img src="{{baseImgUrl}}{{details.poster_path}}" width="50%" height="50%">
-                    <div fxFlex.gt-sm="50%" class="padding-left-25">
+                    <div fxFlex.gt-sm="50%" class="padding-left-24">
                         <mat-card-title>{{ details.title }}</mat-card-title>
                         <p>Overview: {{ details.overview }}</p>
                         <p>{{ details.release_date | date:'longDate'}}</p>

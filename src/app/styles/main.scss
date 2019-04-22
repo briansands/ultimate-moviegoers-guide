@@ -1,19 +1,16 @@
 @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import './layout.scss';
+@import './margin.scss';
+@import './padding.scss';
+@import './typography.scss';
+@import './breakpoints.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 ul { padding: 0; margin: 0; }
-nav { margin: 0 auto; width: 50%; }
+nav { text-align: center; }
 button { padding: 8px; }
-
-.width-100 {
-    width: 100%;
-}
 
 .no-outline-focus * {
     outline: none;
-}
-
-.padding-left-25 {
-    padding-left: 25px;
 }

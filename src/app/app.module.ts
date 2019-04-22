@@ -4,17 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { 
-    MatSelectModule, 
-    MatFormFieldModule, 
-    MatIconModule, 
-    MatSidenavModule, 
-    MatToolbarModule,
-    MatCardModule,
-    MatDividerModule,
-    MatGridListModule,
-} from '@angular/material';
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -27,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SearchModule } from './search/search.module';
 import { MoviesResolver } from './movies/movies.resolver';
 import { MovieDetailsResolver } from './pages/details/details.resolver';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -45,15 +35,8 @@ import { MovieDetailsResolver } from './pages/details/details.resolver';
         HttpClientModule,
         FlexLayoutModule,
         BrowserAnimationsModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatCardModule,
-        MatDividerModule,
-        MatGridListModule,
-        SearchModule
+        SearchModule,
+        MaterialModule,
     ],
     providers: [
         MoviesService,
