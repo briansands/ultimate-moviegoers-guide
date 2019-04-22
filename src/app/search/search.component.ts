@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent {
     public myControl = new FormControl();
-    public searchResults: Observable<string | Object>;
+    public searchResults$: Observable<string | Object>;
 
     public constructor(
         private searchService: SearchService,
@@ -19,7 +19,7 @@ export class SearchComponent {
     ) { }
 
     public ngOnInit() {
-        this.myControl.valueChanges.subscribe(value => this.searchResults = this.searchService.search(value));
+        this.myControl.valueChanges.subscribe(value => this.searchResults$ = this.searchService.search(value));
     }
 
     public routeToMovieDetails(selectedMovieName: string, selectedMovieId: string) {

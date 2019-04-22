@@ -8,7 +8,10 @@ import {
     MatFormFieldModule, 
     MatIconModule, 
     MatSidenavModule, 
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatDividerModule,
+    MatGridListModule,
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -45,6 +48,9 @@ import { MovieDetailsResolver } from './pages/details/details.resolver';
         MatIconModule,
         MatFormFieldModule,
         MatSelectModule,
+        MatCardModule,
+        MatDividerModule,
+        MatGridListModule,
         SearchModule
     ],
     providers: [

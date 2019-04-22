@@ -6,6 +6,13 @@
         </mat-option>
     </mat-select>
 </mat-form-field>
-<p *ngIf="movies$ | async as movies">
-    {{ movies | json }}
-</p>
+<ng-container *ngIf="movies$ | async as movies">
+   <div *ngFor="let movie of movies">
+        <mat-card *ngFor="let details of movie?.results">
+            <mat-card-content>
+                <mat-card-title>{{details.title}}</mat-card-title>
+                <img src="{{baseImgUrl}}{{details.poster_path}}">
+            </mat-card-content>
+        </mat-card>
+   </div>
+</ng-container>
