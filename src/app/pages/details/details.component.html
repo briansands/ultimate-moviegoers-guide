@@ -2,7 +2,7 @@
   {{movieDetails | json}}
   <div fxLayout="row wrap">
       <mat-card class="width-100">
-          <mat-card-content fxLayout="row">
+          <mat-card-content fxLayout="row" [ngStyle]="{'background': bgImgUrl}" class="details-bg-image">
             
           </mat-card-content>
       </mat-card>
