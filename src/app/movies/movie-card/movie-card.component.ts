@@ -16,7 +16,7 @@ export class MovieCardComponent {
     constructor(private router: Router) { }
 
     public routeToMovieDetails(selectedMovieName: string, selectedMovieId: string) {
-        const movieName = selectedMovieName.replace(/\W/g, '');
+        const movieName = selectedMovieName.replace(/-| /g, '');
 
         if (selectedMovieId) {
             this.router.navigate([`details/${movieName}`, selectedMovieId]);
