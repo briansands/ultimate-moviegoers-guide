@@ -1,3 +1,10 @@
-<p *ngIf="movieDetails$ | async as movies">
-  {{ movies | json }}
-</p>
+<ng-container *ngIf="movieDetails$ | async as movieDetails">
+  {{movieDetails | json}}
+  <div fxLayout="row wrap">
+      <mat-card class="width-100">
+          <mat-card-content fxLayout="row">
+            
+          </mat-card-content>
+      </mat-card>
+  </div>
+</ng-container>
