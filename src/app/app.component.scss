@@ -2,8 +2,9 @@
 @import './styles/breakpoints.scss';
 
 .icon {
-    background: transparent;
     border: none;
+    margin: 8px;
+    background: transparent;
     cursor: pointer;
 }
 
