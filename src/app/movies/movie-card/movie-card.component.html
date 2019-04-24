@@ -2,13 +2,13 @@
         <div fxLayout="row wrap">
             <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="50%" fxFlex.gt-md="33%">
                     <mat-card-content fxLayout="row">
-                        <img src="{{baseImgUrl}}{{details.poster_path}}" width="50%" height="50%">
+                        <img src="{{baseImgUrl}}{{details.poster_path}}" width="50%" height="50%" (click)="routeToMovieDetails(details?.original_title, details?.id)" class="cursor-pointer">
                         <div fxFlex.gt-sm="50%" class="padding-left-24">
                             <mat-card-title>{{ details.title }}</mat-card-title>
                             <p>Overview: {{ details.overview }}</p>
                             <p>{{ details.release_date | date:'longDate'}}</p>
                             <a (click)="routeToMovieDetails(details?.original_title, details?.id)" class="movie-card-link">
-                                <button mat-stroked-button class="movie-card-link">More Details</button>
+                                <button mat-raised-button mat-stroked-button class="movie-card-link">More Details</button>
                             </a>
                         </div>
                     </mat-card-content>
