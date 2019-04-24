@@ -1,8 +1,8 @@
 <form class="width-100">
     <mat-form-field class="width-100">
-      <input type="text" aria-label="Number" [formControl]="myControl" [matAutocomplete]="auto" placeholder="Search For Movies" matInput>
+      <input #searchInput type="text" aria-label="Number" [formControl]="myControl" [matAutocomplete]="auto" placeholder="Search For Movies" matInput>
       <mat-autocomplete #auto="matAutocomplete">
-       <mat-option *ngFor="let option of (searchResults$ | async)?.results" (click)="routeToMovieDetails(option.original_title, option.id)">
+       <mat-option *ngFor="let option of (searchResults$ | async)?.results" (click)="routeToMovieDetails(option.original_title, option.id); searchInput.blur()">
           {{option.original_title}}
         </mat-option>
       </mat-autocomplete>
