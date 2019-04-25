@@ -1,5 +1,5 @@
 import { Observable, pipe, forkJoin, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators'
+import { map, catchError, publishReplay, refCount } from 'rxjs/operators'
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -10,25 +10,38 @@ import { BASE_URL, API_KEY } from '../models/api.const'
 import { NOW_PLAYING, POPULAR, TOP_RATED} from '../models/movies.const';
 import { MovieDetails } from '../models/movie-details.interface';
 
-
 @Injectable()
 export class MoviesService {
-
+    private allMoviesCache$: Observable<Movies[]>;
+    private nowPlayingCache$: Observable<Movies>;
+    private popularCache$: Observable<Movies>;
+    private topRatedCache$: Observable<Movies>;
+    
     constructor(private http: HttpClient) { }
 
-    public getMovies(movieType: MovieTypes): Observable<Movies> {
-        let response;
+    public getMovies(movieType: MovieTypes): Observable<Movies|Movies[]> {
         if (movieType === MovieTypes.ALL) {
-            response = this.getAllMovies();
+            if (!this.allMoviesCache$) {
+                this.allMoviesCache$ = this.getAllMovies();
+            }
+            return this.allMoviesCache$;
         } else if (movieType === MovieTypes.NOW_PLAYING) {
-            response = this.getNowPlaying();
+            if (!this.nowPlayingCache$) {
+                this.nowPlayingCache$ = this.getNowPlaying();
+            }
+            return this.nowPlayingCache$;
         } else if (movieType === MovieTypes.POPULAR) {
-            response = this.getPopularMovies();
+            if (!this.popularCache$) {
+                this.popularCache$ = this.getPopularMovies();
+            }
+            return this.popularCache$;
         } else if (movieType === MovieTypes.TOP_RATED) {
-            response = this.getTopRatedMovies();
+            if (!this.topRatedCache$) {
+                this.topRatedCache$ = this.getTopRatedMovies();
+            }
+            return this.topRatedCache$;
         }
 
-        return response;
     }
 
     public getDetails(id: string): Observable<MovieDetails> {
@@ -43,25 +56,34 @@ export class MoviesService {
         const popularRequest = this.request(POPULAR, MovieTypes.POPULAR);
         const topRatedRequest = this.request(TOP_RATED, MovieTypes.TOP_RATED);
 
-        return forkJoin([nowPlayingRequest, popularRequest, topRatedRequest])
-            .pipe(map((response => response)));
+        return forkJoin([nowPlayingRequest, popularRequest, topRatedRequest]).pipe(
+            map(response => response),
+            publishReplay(1),
+            refCount()
+        );
     }
 
     private getNowPlaying() {
         return this.request(NOW_PLAYING, MovieTypes.NOW_PLAYING).pipe(
-            map(response => response)
+            map(response => response),
+            publishReplay(1),
+            refCount()
         );
     }
 
     private getPopularMovies() {
         return this.request(POPULAR, MovieTypes.POPULAR).pipe(
-            map(response => response)
+            map(response => response),
+            publishReplay(1),
+            refCount()
         );
     }
 
     private getTopRatedMovies() {
         return this.request(TOP_RATED, MovieTypes.TOP_RATED).pipe(
-            map(response => response)
+            map(response => response),
+            publishReplay(1),
+            refCount()
         );
     }
 
