@@ -12,36 +12,24 @@ import { MovieDetails } from '../models/movie-details.interface';
 
 @Injectable()
 export class MoviesService {
-    private allMoviesCache$: Observable<Movies[]>;
-    private nowPlayingCache$: Observable<Movies>;
-    private popularCache$: Observable<Movies>;
-    private topRatedCache$: Observable<Movies>;
+    private allMoviesCache$: Observable<Movies|Movies[]>;
+    private nowPlayingCache$: Observable<Movies|Movies[]>;
+    private popularCache$: Observable<Movies|Movies[]>;
+    private topRatedCache$: Observable<Movies|Movies[]>;
     
     constructor(private http: HttpClient) { }
 
     public getMovies(movieType: MovieTypes): Observable<Movies|Movies[]> {
-        if (movieType === MovieTypes.ALL) {
-            if (!this.allMoviesCache$) {
-                this.allMoviesCache$ = this.getAllMovies();
-            }
-            return this.allMoviesCache$;
-        } else if (movieType === MovieTypes.NOW_PLAYING) {
-            if (!this.nowPlayingCache$) {
-                this.nowPlayingCache$ = this.getNowPlaying();
-            }
-            return this.nowPlayingCache$;
-        } else if (movieType === MovieTypes.POPULAR) {
-            if (!this.popularCache$) {
-                this.popularCache$ = this.getPopularMovies();
-            }
-            return this.popularCache$;
-        } else if (movieType === MovieTypes.TOP_RATED) {
-            if (!this.topRatedCache$) {
-                this.topRatedCache$ = this.getTopRatedMovies();
-            }
-            return this.topRatedCache$;
+        switch (movieType) {
+            case MovieTypes.ALL:
+                return this.getAllMovies();
+            case MovieTypes.NOW_PLAYING:
+                return this.getNowPlaying();
+            case MovieTypes.POPULAR:
+                return this.getPopularMovies();
+            case MovieTypes.TOP_RATED:
+                return this.getTopRatedMovies();
         }
-
     }
 
     public getDetails(id: string): Observable<MovieDetails> {
@@ -52,35 +40,39 @@ export class MoviesService {
     }
 
     private getAllMovies() {
-        const nowPlayingRequest = this.request(NOW_PLAYING, MovieTypes.NOW_PLAYING);
-        const popularRequest = this.request(POPULAR, MovieTypes.POPULAR);
-        const topRatedRequest = this.request(TOP_RATED, MovieTypes.TOP_RATED);
+        if (!this.allMoviesCache$) {
+            const nowPlayingRequest = this.request(NOW_PLAYING, MovieTypes.NOW_PLAYING);
+            const popularRequest = this.request(POPULAR, MovieTypes.POPULAR);
+            const topRatedRequest = this.request(TOP_RATED, MovieTypes.TOP_RATED);
 
-        return forkJoin([nowPlayingRequest, popularRequest, topRatedRequest]).pipe(
-            map(response => response),
-            publishReplay(1),
-            refCount()
-        );
+            this.allMoviesCache$ = this.mapMovies(forkJoin([nowPlayingRequest, popularRequest, topRatedRequest]));
+        }
+        return this.allMoviesCache$;
     }
 
     private getNowPlaying() {
-        return this.request(NOW_PLAYING, MovieTypes.NOW_PLAYING).pipe(
-            map(response => response),
-            publishReplay(1),
-            refCount()
-        );
+        if (!this.nowPlayingCache$) {
+            this.nowPlayingCache$ = this.mapMovies(this.request(NOW_PLAYING, MovieTypes.NOW_PLAYING));
+        }
+        return this.nowPlayingCache$;
     }
 
     private getPopularMovies() {
-        return this.request(POPULAR, MovieTypes.POPULAR).pipe(
-            map(response => response),
-            publishReplay(1),
-            refCount()
-        );
+        if (!this.popularCache$) {
+            this.popularCache$ = this.mapMovies(this.request(POPULAR, MovieTypes.POPULAR));
+        }
+        return this.popularCache$;
     }
 
     private getTopRatedMovies() {
-        return this.request(TOP_RATED, MovieTypes.TOP_RATED).pipe(
+        if (!this.topRatedCache$) {
+            this.topRatedCache$ =  this.mapMovies(this.request(TOP_RATED, MovieTypes.TOP_RATED));
+        }
+        return this.topRatedCache$
+    }
+
+    private mapMovies(moviesResponse: Observable<Movies|Movies[]>) {
+        return moviesResponse.pipe(
             map(response => response),
             publishReplay(1),
             refCount()
@@ -110,7 +102,6 @@ export class MoviesService {
                 }
                 return 0;
         });
-
         return nowPlayingResponse;
     }
 }
