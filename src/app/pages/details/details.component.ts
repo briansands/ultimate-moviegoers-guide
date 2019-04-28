@@ -13,7 +13,8 @@ import { BASE_IMG_URL_ORIGINAL, BASE_IMG_URL } from 'src/app/models/movies.const
     styleUrls: ['./details.component.scss']
 })
 
-export class DetailsComponent {
+export class DetailsComponent implements OnInit {
+
     public readonly baseBgImgUrl = BASE_IMG_URL_ORIGINAL;
     public readonly baseImgUrl = BASE_IMG_URL;
     public bgImgUrl : string;
@@ -26,10 +27,9 @@ export class DetailsComponent {
     );
 
     public ngOnInit(): void {
-        this.movieDetails$.subscribe(details => { 
+        this.movieDetails$.subscribe(details => {
             this.bgImgUrl = `top / cover no-repeat url(${this.baseBgImgUrl + details.backdrop_path})`;
             this.posterBgImg = `url(${this.baseImgUrl + details.poster_path}) top center / contain no-repeat`;
         });
     }
-
 }

@@ -23,6 +23,22 @@
     z-index: 1;
 }
 
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+p {
+    font-size: 20px;
+}
+
 .mat-card {
     padding: 0;
 }
@@ -38,19 +54,7 @@
     display: inline-block;
 }
 
-p {
-    font-size: 20px;
-}
-
-h2 {
-    font-size: 28px;
-}
-
-h3 {
-    font-size: 24px;
-}
-
-@media (max-width: 1024px) { 
+@media (max-width: 1024px) {
     .fxLayout-column-md {
         flex-direction: column !important;
     }

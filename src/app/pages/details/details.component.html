@@ -1,28 +1,35 @@
 <ng-container *ngIf="movieDetails$ | async as details">
-  <div fxLayout="row" fxLayoutAlign="center">
-      <mat-card class="width-100">
-          <mat-card-content fxLayout="row" fxLayoutAlign="center" [ngStyle]="{'background': bgImgUrl}" class="height-100 fxLayout-column-md details-bg-image">
-            <div fxFlex.gt-md="75%" class="content">
-                <mat-card-title *ngIf="details.title">
-                  <h1 class="margin-top-0">{{ details.title }}</h1>
-                </mat-card-title>
-                <h2 *ngIf="details.tagline" class="italic">"{{ details.tagline }}"</h2>
-                <ng-container *ngIf="details.overview">
-                  <h3>Overview:</h3>
-                  <p>{{ details.overview }}</p>
-                </ng-container>
-                <ng-container *ngIf="details.release_date">
-                  <h3 class="display-inline-block">Release Date:</h3>
-                  <p class="display-inline-block padding-left-8">{{ details.release_date | date:'longDate' }}</p>
-                </ng-container>
-                <div>
-                    <h3 class="display-inline-block">Budget:</h3>
-                    <p *ngIf="details.budget" class="display-inline-block padding-left-8" >{{ details.budget | currency }}</p>
-                    <p *ngIf="details.budget === 0" class="display-inline-block padding-left-8" >N/A</p>
+    <div fxLayout="row" fxLayoutAlign="center">
+        <mat-card class="width-100">
+            <mat-card-content fxLayout="row" fxLayoutAlign="center" [ngStyle]="{'background': bgImgUrl}"
+                class="height-100 fxLayout-column-md details-bg-image">
+                <div fxFlex.gt-md="75%" class="content">
+                    <mat-card-title *ngIf="details.title">
+                            <h1 class="margin-top-0">{{ details.title }}</h1>
+                    </mat-card-title>
+                    <h2 *ngIf="details.tagline" class="italic">"{{ details.tagline }}"</h2>
+                    <div *ngIf="details.overview">
+                        <h3>Overview:</h3>
+                        <p>{{ details.overview }}</p>
+                    </div>
+                    <div *ngIf="details.release_date">
+                        <h3 class="display-inline-block">Release Date:</h3>
+                        <p class="display-inline-block padding-left-8">{{ details.release_date | date:'longDate' }}</p>
+                    </div>
+                    <div *ngIf="details.runtime">
+                        <h3 class="display-inline-block">Runtime:</h3>
+                        <p class="display-inline-block padding-left-8">{{ details.runtime | runtime }}</p>
+                    </div>
+                    <div>
+                        <h3 class="display-inline-block">Budget:</h3>
+                        <p *ngIf="details.budget" class="display-inline-block padding-left-8">
+                            {{ details.budget | currency }}
+                        </p>
+                        <p *ngIf="details.budget === 0" class="display-inline-block padding-left-8">N/A</p>
+                    </div>
                 </div>
-            </div>
-            <div fxFlex.gt-md="25%" [ngStyle]="{'background': posterBgImg}" class="poster-bg-image"></div>
-          </mat-card-content>
-      </mat-card>
-  </div>
+                <div fxFlex.gt-md="25%" [ngStyle]="{'background': posterBgImg}" class="poster-bg-image"></div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </ng-container>

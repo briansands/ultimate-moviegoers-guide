@@ -18,7 +18,7 @@ import { MoviesResolver } from './movies/movies.resolver';
 import { MovieDetailsResolver } from './pages/details/details.resolver';
 import { MaterialModule } from './material.module';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
-
+import { RuntimePipe } from './pipes/runtime.pipe';
 
 @NgModule({
     declarations: [
@@ -30,6 +30,7 @@ import { MovieCardComponent } from './movies/movie-card/movie-card.component';
         PopularComponent,
         TopRatedComponent,
         MovieCardComponent,
+        RuntimePipe,
     ],
     imports: [
         AppRoutingModule,
