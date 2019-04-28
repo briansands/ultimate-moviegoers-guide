@@ -7,8 +7,9 @@ import { MoviesService } from './movies.service';
 @Injectable()
 export class MoviesResolver implements Resolve<Movies|Movies[]>{
     constructor(private moviesService: MoviesService) {}
-    
+
     public resolve(route: ActivatedRouteSnapshot) {
-        return this.moviesService.getMovies(route.data.movieType);
+        const queryParams = route.queryParams;
+        return this.moviesService.getMovies(route.data.movieType, queryParams);
     }
 }

@@ -13,26 +13,26 @@ import { MovieDetailsResolver } from './pages/details/details.resolver';
 const routes: Routes = [
     {
         path: '',
-        component: HomeComponent, 
+        component: HomeComponent,
         resolve: {movies: MoviesResolver},
         data: { movieType: MovieTypes.ALL }
     },
-    {   path: 'now-playing', 
+    {   path: 'now-playing',
         component: NowPlayingComponent,
         resolve: {movies: MoviesResolver},
         data: { movieType: MovieTypes.NOW_PLAYING }
     },
-    {   path: 'popular', 
+    {   path: 'popular',
         component: PopularComponent,
         resolve: {movies: MoviesResolver},
-        data: { movieType: MovieTypes.POPULAR } 
+        data: { movieType: MovieTypes.POPULAR }
     },
-    {   path: 'top-rated', 
-        component: TopRatedComponent, 
+    {   path: 'top-rated',
+        component: TopRatedComponent,
         resolve: {movies: MoviesResolver},
-        data: { movieType: MovieTypes.TOP_RATED } 
+        data: { movieType: MovieTypes.TOP_RATED }
     },
-    {   path: 'details/:movieName/:id', 
+    {   path: 'details/:movieName/:id',
         component: DetailsComponent ,
         resolve: { movieDetails: MovieDetailsResolver },
     },

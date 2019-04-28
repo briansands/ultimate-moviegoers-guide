@@ -1,7 +1,7 @@
 <ng-container *ngIf="movieDetails$ | async as details">
     <div fxLayout="row" fxLayoutAlign="center">
         <mat-card class="width-100">
-            <mat-card-content fxLayout="row" fxLayoutAlign="center" [ngStyle]="{'background': bgImgUrl}"
+            <mat-card-content fxLayout="row" fxLayoutAlign="center center" [ngStyle]="{'background': bgImgUrl}"
                 class="height-100 fxLayout-column-md details-bg-image">
                 <div fxFlex.gt-md="75%" class="content">
                     <mat-card-title *ngIf="details.title">

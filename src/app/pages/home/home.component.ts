@@ -29,9 +29,9 @@ export class HomeComponent {
     }
 
     private sortedMovies(movies: Movies[], sortOption: SortOptions): Movies[] {
-        let sortedMovies = [];
+        const sortedMovies = [];
 
-        for (let movie of movies) {
+        for (const movie of movies) {
             if (movie.type === sortOption) {
                 sortedMovies.unshift(movie);
             } else {

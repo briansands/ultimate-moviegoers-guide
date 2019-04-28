@@ -9,6 +9,7 @@ import { MovieTypes } from '../models/movie-types.enum';
 import { BASE_URL, API_KEY } from '../models/api.const'
 import { NOW_PLAYING, POPULAR, TOP_RATED} from '../models/movies.const';
 import { MovieDetails } from '../models/movie-details.interface';
+import { Params } from '@angular/router';
 
 @Injectable()
 export class MoviesService {
@@ -16,10 +17,12 @@ export class MoviesService {
     private nowPlayingCache$: Observable<Movies|Movies[]>;
     private popularCache$: Observable<Movies|Movies[]>;
     private topRatedCache$: Observable<Movies|Movies[]>;
-    
+    private queryParams: Params;
+
     constructor(private http: HttpClient) { }
 
-    public getMovies(movieType: MovieTypes): Observable<Movies|Movies[]> {
+    public getMovies(movieType: MovieTypes, queryParams: Params): Observable<Movies|Movies[]> {
+        this.queryParams = queryParams;
         switch (movieType) {
             case MovieTypes.ALL:
                 return this.getAllMovies();
@@ -68,7 +71,7 @@ export class MoviesService {
         if (!this.topRatedCache$) {
             this.topRatedCache$ =  this.mapMovies(this.request(TOP_RATED, MovieTypes.TOP_RATED));
         }
-        return this.topRatedCache$
+        return this.topRatedCache$;
     }
 
     private mapMovies(moviesResponse: Observable<Movies|Movies[]>) {
@@ -80,6 +83,8 @@ export class MoviesService {
     }
 
     private request(req: string, type?: MovieTypes): Observable<Movies&MovieDetails> {
+        req = this.addQueryParams(req);
+
         return this.http.get(req).pipe(map((response: any) => {
             if (type) {
                 response.type = type;
@@ -87,7 +92,7 @@ export class MoviesService {
             if (type === MovieTypes.NOW_PLAYING) {
                 response = this.sortNowPlayingByReleaseDate(response);
             }
-            
+
             return response;
         }), catchError(err => of(`error: ${err}`)));
     }
@@ -103,5 +108,15 @@ export class MoviesService {
                 return 0;
         });
         return nowPlayingResponse;
+    }
+
+    private addQueryParams(req: string) {
+        if (!this.queryParams.isEmpty) {
+            for (const [key, value] of Object.entries(this.queryParams)) {
+                req += `&${key}=${value}`;
+            }
+        }
+
+        return req;
     }
 }
