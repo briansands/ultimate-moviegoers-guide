@@ -13,7 +13,10 @@
         height: 100%;
         background-image: linear-gradient(to bottom right, red, blue);
         opacity: 0.6;
-      }
+    }
+    @media (min-width: 1025px) {
+        height: calc(100vh - 14vh);
+    }
 }
 
 .poster-bg-image {
