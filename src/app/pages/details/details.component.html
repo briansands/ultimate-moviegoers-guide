@@ -23,7 +23,7 @@
                     <div>
                         <h3 class="display-inline-block">Budget:</h3>
                         <p *ngIf="details.budget" class="display-inline-block padding-left-8">
-                            {{ details.budget | currency }}
+                            {{ details.budget | currency : 'USD' : 'symbol' : '1.0' }}
                         </p>
                         <p *ngIf="details.budget === 0" class="display-inline-block padding-left-8">N/A</p>
                     </div>
