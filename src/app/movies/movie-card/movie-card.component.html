@@ -1,6 +1,6 @@
 <ng-container *ngIf="movie?.results">
         <div fxLayout="row wrap">
-            <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="50%" fxFlex.gt-md="33%">
+            <mat-card *ngFor="let details of movie?.results" fxFlex.gt-sm="48%" fxFlex.gt-md="31%" class="card-wrapper">
                     <mat-card-content fxLayout="row">
                         <img src="{{baseImgUrl}}{{details.poster_path}}" width="50%" height="50%" (click)="routeToMovieDetails(details?.original_title, details?.id)" class="cursor-pointer">
                         <div fxFlex.gt-sm="50%" class="padding-left-24">

@@ -1,5 +1,14 @@
+@import '../../styles/breakpoints.scss';
+
 .movie-card-link {
     &:hover {
         cursor: pointer;
+    }
+}
+
+.card-wrapper {
+    margin: 4px 8px;
+    @media (min-width: $gt-sm) {
+        margin: 8px;
     }
 }
