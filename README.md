@@ -3,12 +3,7 @@
 ## Overview
 
 The Ultimate Moviegoers Guide uses _The Movie Database API_.
-* Shows the user a list of movies where the user can sort by
-  * Now Playing
-  * Popular
-  * Top Rated
-* Allows the user to search for a movie
-* Allows the user to select a movie and see more details.
+* A simple movie app built with Angular 7, RxJS, and Angular Material
 
 ## View The Live App
 [The Ultimate Moviegoers Guide](https://ultimate-moviegoers-guide-ccb.herokuapp.com/)
