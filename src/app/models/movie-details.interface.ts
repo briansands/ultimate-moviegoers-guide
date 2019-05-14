@@ -1,5 +1,6 @@
 export interface MovieDetails {
     original_title: string;
+    title: string;
     backdrop_path: string;
     poster_path: string;
     overview: string;

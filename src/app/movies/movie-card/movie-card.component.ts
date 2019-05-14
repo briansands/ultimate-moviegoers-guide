@@ -9,14 +9,14 @@ import { Router } from '@angular/router';
     styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent {
-    @Input() 
+    @Input()
     public movie: Movies;
     public readonly baseImgUrl = BASE_IMG_URL;
 
     constructor(private router: Router) { }
 
     public routeToMovieDetails(selectedMovieName: string, selectedMovieId: string) {
-        const movieName = selectedMovieName.replace(/-| /g, '');
+        const movieName = selectedMovieName.replace(/\W/g, '');
 
         if (selectedMovieId) {
             this.router.navigate([`details/${movieName}`, selectedMovieId]);
