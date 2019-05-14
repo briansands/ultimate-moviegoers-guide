@@ -6,7 +6,7 @@ import { MoviesService } from 'src/app/movies/movies.service';
 
 
 @Injectable()
-export class MovieDetailsResolver implements Resolve<MovieDetails>{
+export class MovieDetailsResolver implements Resolve<MovieDetails> {
     constructor(private moviesService: MoviesService) {}
 
     public resolve(route: ActivatedRouteSnapshot) {

@@ -17,7 +17,7 @@ export class DetailsComponent implements OnInit {
 
     public readonly baseBgImgUrl = BASE_IMG_URL_ORIGINAL;
     public readonly baseImgUrl = BASE_IMG_URL;
-    public bgImgUrl : string;
+    public bgImgUrl: string;
     public posterBgImg: string;
 
     constructor(private route: ActivatedRoute) { }

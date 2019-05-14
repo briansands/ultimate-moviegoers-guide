@@ -4,7 +4,7 @@ import { BASE_IMG_URL } from 'src/app/models/movies.const';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'movie-card',
+    selector: 'app-movie-card',
     templateUrl: './movie-card.component.html',
     styleUrls: ['./movie-card.component.scss']
 })

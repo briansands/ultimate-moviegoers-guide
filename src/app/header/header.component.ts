@@ -7,9 +7,10 @@ import { Component, Output, EventEmitter } from '@angular/core';
 })
 
 export class HeaderComponent {
-    @Output() public onNavClick: EventEmitter<void> = new EventEmitter();
-    
+    @Output()
+    public navClick: EventEmitter<void> = new EventEmitter();
+
     public toggleSideNav() {
-        this.onNavClick.emit();
+        this.navClick.emit();
     }
 }

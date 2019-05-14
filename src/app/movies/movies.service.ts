@@ -1,12 +1,12 @@
 import { Observable, pipe, forkJoin, of } from 'rxjs';
-import { map, catchError, publishReplay, refCount } from 'rxjs/operators'
+import { map, catchError, publishReplay, refCount } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Movies } from '../models/movies.interface';
 import { MovieTypes } from '../models/movie-types.enum';
-import { BASE_URL, API_KEY } from '../models/api.const'
+import { BASE_URL, API_KEY } from '../models/api.const';
 import { NOW_PLAYING, POPULAR, TOP_RATED} from '../models/movies.const';
 import { MovieDetails } from '../models/movie-details.interface';
 import { Params } from '@angular/router';

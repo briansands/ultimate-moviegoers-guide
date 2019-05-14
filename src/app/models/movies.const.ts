@@ -1,4 +1,4 @@
-import { BASE_URL, API_KEY } from './api.const'
+import { BASE_URL, API_KEY } from './api.const';
 
 export const NOW_PLAYING = `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&region=US`;
 export const POPULAR = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&region=US`;

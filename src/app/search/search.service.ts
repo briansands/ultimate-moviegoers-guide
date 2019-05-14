@@ -9,7 +9,7 @@ export class SearchService {
 
     constructor(private http: HttpClient) { }
 
-    public search(value: string): Observable<string | Object> {
+    public search(value: string): Observable<string | object> {
         if (value) {
             const request = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${value}&page=1&include_adult=false`;
             return this.http.get(request).pipe(map(response => response), catchError(err => of(`error: ${err}`)));

@@ -5,7 +5,7 @@ import { Movies } from '../models/movies.interface';
 import { MoviesService } from './movies.service';
 
 @Injectable()
-export class MoviesResolver implements Resolve<Movies|Movies[]>{
+export class MoviesResolver implements Resolve<Movies|Movies[]> {
     constructor(private moviesService: MoviesService) {}
 
     public resolve(route: ActivatedRouteSnapshot) {

@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SearchService } from './search.service';
 import { Router } from '@angular/router';
@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
     templateUrl: './search.component.html',
     styleUrls: ['./search.component.scss']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
     public myControl = new FormControl();
-    public searchResults$: Observable<string | Object>;
+    public searchResults$: Observable<string | object>;
 
     public constructor(
         private searchService: SearchService,

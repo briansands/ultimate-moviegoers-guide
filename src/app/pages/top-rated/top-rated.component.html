@@ -1,6 +1,6 @@
 <ng-container *ngIf="movie$ | async as movie">
     <section>
         <h1>{{ movie.type }}</h1>
-        <movie-card [movie]="movie"></movie-card>
+        <app-movie-card [movie]="movie"></app-movie-card>
     </section>
 </ng-container>

@@ -35,7 +35,7 @@ export class HomeComponent {
             if (movie.type === sortOption) {
                 sortedMovies.unshift(movie);
             } else {
-                sortedMovies.push(movie)
+                sortedMovies.push(movie);
             }
         }
 
