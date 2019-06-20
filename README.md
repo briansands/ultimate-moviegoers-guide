@@ -1,12 +1,11 @@
 # Ultimate Moviegoers Guide
+## View The Live App
+[The Ultimate Moviegoers Guide](https://ultimate-moviegoers-guide-ccb.herokuapp.com/)
 
 ## Overview
 
 The Ultimate Moviegoers Guide uses _The Movie Database API_.
 * A simple movie app built with Angular 7, RxJS, and Angular Material
-
-## View The Live App
-[The Ultimate Moviegoers Guide](https://ultimate-moviegoers-guide-ccb.herokuapp.com/)
 
 ## API
 
